@@ -24,6 +24,7 @@ export default class Group extends Component {
   }
 }
 
+/* Er meot nog veel gebeuren*/
 class User extends Component{
   constructor(){
     super();
