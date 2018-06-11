@@ -21,17 +21,6 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-/android/
-/ios/
-/node_modules/
-yarn.lock
-.babelrc
-.buckconfig
-.flowconfig
-.watchmanconfig
-package.json
-
-
 
 # Android/IntelliJ
 #
