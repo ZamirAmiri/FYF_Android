@@ -89,5 +89,9 @@ module.exports = StyleSheet.create({
   },
   username:{
     fontSize:20,
+    backgroundColor:'green',
+    width:'100%',
+    textAlign:'center',
+    marginTop:'5%',
   }
 });
