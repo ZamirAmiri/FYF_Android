@@ -9,18 +9,19 @@ import {
   Button,
   Alert,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  FlatList
 } from 'react-native';
 
-var data = [];
+var dt = [];
 var style = require('./style');
 var geolocation = navigator.geolocation;
 export default class Group extends Component {
   constructor(){
   super();
   this.state = {
-    xLoc:'',
-    yLoc:'',
+    xLoc:0,
+    yLoc:0,
     error:null,
   }
   this.display = this.display.bind(this);
@@ -35,7 +36,11 @@ export default class Group extends Component {
 
     this.socket.onmessage = (e) => {
       // a message was received
-      console.log(e.data);
+      var device = JSON.parse(e.data);
+      if(device.action == "add"){
+        this.addDevice(device);
+      }
+
     };
 
     this.socket.onerror = (e) => {
@@ -47,6 +52,17 @@ export default class Group extends Component {
       // connection closed
       console.log(e.code, e.reason);
     };
+  }
+  addDevice(device){
+    var x = this.state.xLoc - device.xLoc;
+    var y = this.state.yLoc - device.yLoc;
+    Alert.alert(x+y);
+    var user = {
+      name:device.name,
+      xLoc:x,
+      yLoc:y,
+    };
+    dt.push(user);
   }
   display(){
   var geo_success;
@@ -67,8 +83,12 @@ export default class Group extends Component {
   render(){
     return(
       <View style={style.mainWrapper}>
-      <User onPress={() => {this.display()}}username='Zamir' xLoc={this.state.xLoc} yLoc={this.state.yLoc} distance='142342'/>
+        <User onPress={() => {this.display()}}username='Zamir' xLoc={this.state.xLoc} yLoc={this.state.yLoc} distance='142342'/>
          <Button onPress = {() => this.display()} title="Show me the Morty"/>
+         <FlatList
+          data={dt}
+          renderItem={({item}) => <Text style={style.item}>{item}</Text>}
+        />
       </View>
     );
   }
