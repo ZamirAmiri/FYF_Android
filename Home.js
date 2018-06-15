@@ -76,7 +76,7 @@ class ButtonWrapper extends Component{
 class Settings extends Component{
   render(){
     return(
-      <TouchableOpacity style={style.settingsWrapper}>
+      <TouchableOpacity onPress={() => navigate('Options')} style={style.settingsWrapper}>
       <Image
         style={{flex:1,maxWidth:50}}
         source={cog}

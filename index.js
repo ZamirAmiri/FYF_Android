@@ -1,5 +1,13 @@
-import { AppRegistry } from 'react-native';
+import { AppRegistry,StackNavigator } from 'react-native';
 import App from './App';
-import Group from './Group'
+import Options from './Options';
+import Group from './Group';
+import Home from './Home';
 
-AppRegistry.registerComponent('FYF_Android', () => Group);
+const TheApp = StackNavigator({
+  Home: { screen: Home },
+  Options: { screen: Options },
+  Group: {screen: Group}
+});
+
+AppRegistry.registerComponent('FYF_Android', () => TheApp);
