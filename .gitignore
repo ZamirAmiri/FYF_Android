@@ -23,6 +23,7 @@ DerivedData
 project.xcworkspace
 package.json
 yarn.lock
+.gitignore
 
 # Android/IntelliJ
 #
