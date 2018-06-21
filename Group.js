@@ -255,6 +255,7 @@ getDirectionFromLatLonInRad(lat1,lon1,lat2,lon2){
   }
 
   render(){
+    const { navigate } = this.props.navigation;
     return(
       <View style={{flex:1}}>
       <View style={style.menu}>

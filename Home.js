@@ -75,6 +75,7 @@ class ButtonWrapper extends Component{
 
 class Settings extends Component{
   render(){
+    const { navigate } = this.props.navigation;
     return(
       <TouchableOpacity onPress={() => navigate('Options')} style={style.settingsWrapper}>
       <Image
